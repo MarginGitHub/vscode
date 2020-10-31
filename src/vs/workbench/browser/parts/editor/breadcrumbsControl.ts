@@ -491,7 +491,7 @@ export class BreadcrumbsControl {
 		if (element instanceof FileElement) {
 			if (element.kind === FileKind.FILE) {
 				// open file in any editor
-				this._editorService.openEditor({ resource: element.uri, options: { pinned: pinned } }, group);
+				this._editorService.openEditor({ resource: element.uri, options: { pinned } }, group);
 			} else {
 				// show next picker
 				let items = this._widget.getItems();
@@ -508,7 +508,8 @@ export class BreadcrumbsControl {
 					resource: model.uri,
 					options: {
 						selection: Range.collapseToStart(element.symbol.selectionRange),
-						selectionRevealType: TextEditorSelectionRevealType.CenterIfOutsideViewport
+						selectionRevealType: TextEditorSelectionRevealType.CenterIfOutsideViewport,
+						pinned
 					}
 				}, withUndefinedAsNull(this._getActiveCodeEditor()), group === SIDE_GROUP);
 			}
