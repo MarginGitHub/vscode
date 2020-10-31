@@ -753,13 +753,14 @@ KeybindingsRegistry.registerCommandAndKeybindingRule({
 			// open symbol in editor
 			return editors.openEditor({
 				resource: outlineElement.uri,
-				options: { selection: Range.collapseToStart(element.symbol.selectionRange) }
+				options: { selection: Range.collapseToStart(element.symbol.selectionRange), pinned: true }
 			}, SIDE_GROUP);
 
 		} else if (element && URI.isUri(element.resource)) {
 			// open file in editor
 			return editors.openEditor({
 				resource: element.resource,
+				options: { pinned: true }
 			}, SIDE_GROUP);
 
 		} else {
